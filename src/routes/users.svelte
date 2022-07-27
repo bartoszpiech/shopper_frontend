@@ -25,13 +25,15 @@
         const json = await res.json()
         result = JSON.stringify(json)
         fetchData()
+            name = ""
+            email = ""
         }
 </script>
 
-<input placeholder="NAME" bind:value={name} />
+<input placeholder="NAZWA" bind:value={name} />
 <input placeholder="EMAIL" bind:value={email} />
 <button on:click={doPost}>
-    ADD NEW USER
+    DODAJ
 </button>
 <hr>
 
@@ -39,8 +41,7 @@
 {#if data}
     {#each data as d}
         <a class="user" href={`/users/${d.id}`} use:link>
-            <p>{d.name}</p>
-            <p>{d.email}</p>
+            <h2>{d.name}</h2>
         </a>
     {/each}
 {/if}
@@ -53,15 +54,29 @@
         margin: 5px;
         color: black;
         text-decoration: none;
-        float: left;
         padding: 30px;
-        min-width: 300px;
+        min-width: 100px;
     }
     img {
         max-width: 200px;
         max-height: 200px;
     }
     input {
+        margin: 20px;
         height: 30px;
+        border-radius: 10px;
+    }
+    ::placeholder {
+        text-align: center;
+    }
+    button {
+        color: black;
+        background-color: white;
+        height: 30px;
+    }
+    .products {
+        display: flex;
+        justify-content: center;
+        margin: auto;
     }
 </style>

@@ -5,15 +5,15 @@
 
 
     let menuItems = [
-            { label: 'USERS', url: '/users' },
-            { label: 'CONTACT', url: '/contact' },
+            { label: 'UŻYTKOWNICY', url: '/users' },
+            { label: 'KONTAKT', url: '/contact' },
         ];
 </script>
 
 
 <div class="navbar">
     <div class="logo">
-        <a href="/" use:link><img src={logo} alt="LOGO"></a>
+        <a href="/" use:link>ZARA SHOPPER</a>
     </div>
     {#each menuItems as {label, url}}
             <a href={url} class="link" use:link>
@@ -25,19 +25,24 @@
 
 
 <style>
-    img {
+    .logo {
+        text-decoration: none;
+        padding: 15px;
         float: left;
-        max-width: 50px;
+    }
+    a {
+        text-decoration: none;
+        color: black;
     }
     .navbar {
-        max-width: 1050px;
-        padding: 0 30px;
-        margin: 0 auto;
+        background-color: white;
+        padding: 0 5px;
+        margin-bottom: 20px;
     }
     .link {
         float: right;
-        padding: 20px;
+        padding: 15px;
         text-decoration: none;
-        color: white;
+        color: black;
     }
 </style>

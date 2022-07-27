@@ -37,6 +37,9 @@
             const json = await res.json()
             let result = JSON.stringify(json)
             reloadItems()
+            name = "";
+            size = "";
+            link = "";
         }
     async function deleteUser(userId) {
             const deleteResponse = await fetch(`http://localhost:8080/deleteuser/${userId}`)
@@ -50,30 +53,32 @@
     <h1>{data.name}</h1>
     <h1>{data.email}</h1>
     <button on:click={() => deleteUser(data.id)}>
-        DELETE USER
+        USUŃ UŻYTKOWNIKA
     </button>
     <hr>
     </div>
-    <input placeholder="NAME" bind:value={name}>
-    <input placeholder="SIZE" bind:value={size}>
+    <input placeholder="NAZWA" bind:value={name}>
+    <input placeholder="ROZMIAR" bind:value={size}>
     <input placeholder="LINK" bind:value={link}>
     <button on:click={() => addItem()}>
-        ADD NEW ITEM
+        DODAJ PRZEDMIOT
     </button>
     <hr>
 {/if}
 {#if itemsData}
+    <div class="items">
     {#each itemsData as item}
         <div class="item">
-        <p>ITEM NAME: {item.name}</p>
-        <p>ITEM SIZE: {item.size}</p>
+        <h2>{item.name}</h2>
+        <h3>{item.size}</h3>
         <a href={item.link}>{item.link}</a>
         <br>
-        <button on:click={() => deleteItem(item.id)}>
-            DELETE
-        </button>
         </div>
+        <button on:click={() => deleteItem(item.id)}>
+            USUŃ PRZEDMIOT
+        </button>
     {/each}
+    </div>
 {/if}
 
 <style>
@@ -84,7 +89,9 @@
         margin: auto;
     }
     input {
+        margin: 20px;
         height: 30px;
+        border-radius: 10px;
     }
     h1 {
         color: white;
@@ -94,9 +101,19 @@
         color: white;
     }
     
-    hr {
-        max-width: 50px;
-        color: white;
+    ::placeholder {
+        text-align: center;
+    }
+    button {
+        color: black;
+        background-color: white;
+        height: 30px;
+    }
+    .item {
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+    .items {
     }
 </style>
 
